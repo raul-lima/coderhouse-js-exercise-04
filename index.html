@@ -44,9 +44,9 @@
 
       console.log(contaCorrente);
 
-      var operacao = true;
+      var rodar = true;
 
-      while (operacao) {
+      while (rodar) {
         operacao = prompt(
           "Que operação deseja realizar? Digite: \n 1 - Consultar extrato \n 2 - Depositar valor \n 3 - Sacar valor \n 4 - Sair"
         );
@@ -64,7 +64,8 @@
             contaCorrente.sacar(saque);
             break;
           case "4":
-            operacao = false;
+            rodar = false;
+            break;
           default:
             alert("Operação inválida!");
             break;
