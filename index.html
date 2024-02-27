@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador de conta bancária</title>
+    <script defer>
+      class Conta {
+        constructor(nome, agencia, numero, saldo) {
+          this.nome = nome;
+          this.agencia = agencia;
+          this.numero = numero;
+          this.saldo = saldo;
+        }
+
+        extrato() {
+          console.log("O saldo da conta é de R$ " + this.saldo);
+          alert("O saldo da conta é de R$ " + this.saldo);
+        }
+
+        depositar(valor) {
+          this.saldo = this.saldo + valor;
+          console.log(
+            "Depósito realizado. O novo saldo é de: R$ " + this.saldo
+          );
+          alert("Depósito realizado. O novo saldo é de: R$ " + this.saldo);
+        }
+
+        sacar(valor) {
+          this.saldo = this.saldo - valor;
+          console.log("Saque realizado. O novo saldo é de: R$ " + this.saldo);
+          alert("Saque realizado. O novo saldo é de: R$ " + this.saldo);
+        }
+      }
+
+      var nome = prompt("Digite o nome do titular da conta: ");
+      var saldoInicial = parseFloat(
+        prompt("Digite o saldo inicial da conta: ")
+      );
+
+      const contaCorrente = new Conta(nome, 123456, 122334, saldoInicial);
+
+      alert("Conta criada no nome de " + nome);
+
+      console.log(contaCorrente);
+
+      var operacao = true;
+
+      while (operacao) {
+        operacao = prompt(
+          "Que operação deseja realizar? Digite: \n 1 - Consultar extrato \n 2 - Depositar valor \n 3 - Sacar valor \n 4 - Sair"
+        );
+
+        switch (operacao) {
+          case "1":
+            contaCorrente.extrato();
+            break;
+          case "2":
+            let deposito = parseFloat(prompt("Que valor deseja depositar?"));
+            contaCorrente.depositar(deposito);
+            break;
+          case "3":
+            let saque = parseFloat(prompt("Que valor deseja sacar?"));
+            contaCorrente.sacar(saque);
+            break;
+          case "4":
+            operacao = false;
+          default:
+            alert("Operação inválida!");
+            break;
+        }
+      }
+
+      alert("Operação finalizada!");
+    </script>
+  </head>
+  <body></body>
+</html>
